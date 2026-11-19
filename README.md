@@ -10,11 +10,17 @@ calculations, backward blueprint, training epochs, final inference view, and
 dashboard, together with a linked **PyTorch Code** panel containing the model,
 loss, and SGD training loop. Backpropagation is always enabled.
 
-To restore the code panel in an existing workbook, replace your installed
-**HackPropagation** Office Script with the complete contents of `src/main.ts`,
-save it, and run it again. Associate that script with the workbook's Run button
-if needed. Existing buttons may still reference an older shared OneDrive script;
-pulling this repository does not update scripts stored in OneDrive.
+Use [**Hack Propagation V2.xlsx**](Hack%20Propagation%20V2.xlsx), the current
+workbook supplied for this project. It includes `Architect`, `Helper`, and
+`tinyDigits`, with a network example and H5 set to 3. Run the generator to create
+`Blueprint`, the PyTorch code panel, training epochs, and Dashboard.
+
+Keep the spaces in the workbook filename: the older shared Run script hides code
+when a filename contains `HackPropagation` without a space.
+
+For another Microsoft 365 account, or to use this project's dedicated generator,
+install `src/main.ts` as **HackPropagation** in Automate and associate it with the
+Run button. This generator always includes the PyTorch panel.
 
 The generated PyTorch code uses random example inputs, targets, and model weights.
 It illustrates the architecture and training steps; it does not export the exact
@@ -27,7 +33,7 @@ the code links beside Blueprint blocks.
 
 ## Run in Excel
 
-1. Open `HackPropagation.xlsx` in Excel with Office Scripts and dynamic arrays enabled.
+1. Open `Hack Propagation V2.xlsx` in Excel with Office Scripts and dynamic arrays enabled.
 2. In **Automate → New Script**, replace the example with the complete contents of
    `src/main.ts`. Save the script as **HackPropagation**.
 3. On the `Architect` worksheet, configure the network in **B5:D50**: layer,
@@ -46,8 +52,8 @@ the code links beside Blueprint blocks.
 Keep the `Architect`, `Helper`, and `tinyDigits` worksheets: the original worksheet
 name is retained for existing formula/navigation compatibility. The workbook is a
 complete copy of the upstream template, preserving native formatting, validation,
-the image grid, and all 110 tinyDigits samples. Its initial appearance is the
-upstream interface until the first script run. The old buttons reference external
+the image grid, and all 110 tinyDigits samples. The V2 workbook starts with the architecture and data sheets; generated views
+appear after running the generator. The old buttons reference external
 OneDrive scripts; run this project's scripts from Automate or associate the included
 source with a new worksheet button. The scripts preserve worksheet buttons.
 
