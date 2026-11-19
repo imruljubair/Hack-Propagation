@@ -1,0 +1,8 @@
+{
+  "version": "0.3.0",
+  "body": "",
+  "description": "HackPropagation: backpropagation, training epochs, and dashboard.",
+  "noCodeMetadata": "",
+  "parameterInfo": "{\"version\":1,\"originalParameterOrder\":[],\"parameterSchema\":{\"type\":\"object\",\"default\":{},\"x-ms-visibility\":\"internal\"},\"returnSchema\":{\"type\":\"object\",\"properties\":{}},\"signature\":{\"comment\":\"\",\"parameters\":[{\"name\":\"workbook\",\"comment\":\"\"}]}}",
+  "apiInfo": "{\"variant\":\"synchronous\",\"variantVersion\":2}"
+}

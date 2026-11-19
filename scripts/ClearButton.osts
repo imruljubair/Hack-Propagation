@@ -1,0 +1,8 @@
+{
+  "version": "0.3.0",
+  "body": "function main(workbook: ExcelScript.Workbook) {\n    const sheet = workbook.getWorksheet(\"Architect\");\n    sheet.getRange(\"B1\").setValue(\"✍️ HackPropagation\");\n    sheet.getRange(\"G4\").setValue(\"Mode\");\n    sheet.getRange(\"H4\").setValue(\"Epochs ↓\");\n    const arrowrange = sheet.getRangeByIndexes(4, 1, 50, 5);\n    arrowrange.setValue(\"\");\n    const messagerane = sheet.getRangeByIndexes(5, 6, 50, 2);\n    messagerane.setValue(\"\");\n    sheet.getCell(4, 7).setValue(1);\n    sheet.getRange(\"G5\").setControl({ type: ExcelScript.CellControlType.empty });\n    sheet.getCell(4, 6).setValue(\"Backpropagation\");\n    const sheets = workbook.getWorksheets();\n    for (let i = sheets.length - 1; i >= 0; i--) {\n        const sheet = sheets[i];\n        const name = sheet.getName();\n        if (name === \"Blueprint\" || name === \"Blueprint_inference\" || /^Blueprint_ep\\d+$/.test(name)) {\n            sheet.delete();\n        }\n    }\n    let dashboardSheet = workbook.getWorksheet(\"Dashboard\");\n    if (dashboardSheet) {\n        dashboardSheet.delete();\n    }\n}\n",
+  "description": "HackPropagation: backpropagation, training epochs, and dashboard. Script: ClearButton.",
+  "noCodeMetadata": "",
+  "parameterInfo": "{\"version\":1,\"originalParameterOrder\":[],\"parameterSchema\":{\"type\":\"object\",\"default\":{},\"x-ms-visibility\":\"internal\"},\"returnSchema\":{\"type\":\"object\",\"properties\":{}},\"signature\":{\"comment\":\"\",\"parameters\":[{\"name\":\"workbook\",\"comment\":\"\"}]}}",
+  "apiInfo": "{\"variant\":\"synchronous\",\"variantVersion\":2}"
+}
