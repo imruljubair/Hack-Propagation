@@ -16,6 +16,10 @@ script suppresses PyTorch output when the workbook filename contains
 PyTorch output. Run the generator again to replace any previously generated code
 section and links.
 
+![Forward pass, backpropagation, and weight updates illustrated in Excel](assets/backpropagation-overview.png)
+
+*Illustration of forward calculations, gradient flow, and weight updates. The figure includes the original PyTorch code panel; code generation is disabled in this edition.*
+
 ## Run in Excel
 
 1. Open `HackPropagation.xlsx` in Excel with Office Scripts and dynamic arrays enabled.
