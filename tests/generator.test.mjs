@@ -34,11 +34,20 @@ for(const [name,layers] of Object.entries(cases)) {
       const entries=[...book.getWorksheet('Blueprint').cells.values()];
       const text=entries.map(v=>v.value??v.formula??'').join('\n');
       assert.ok(formulas(book).some(([,v])=>v.formula.includes('MMULT(')));
-      assert.doesNotMatch(text,/nn.Sequential|PyTorch Code|torchcode|code_layer_|optimizer|\.backward\(/);
-      for(const sheet of book.getWorksheets()) {
-        const output=[...sheet.cells.values()].map(v=>v.value??v.formula??'').join('\n');
-        assert.doesNotMatch(output,/PyTorch Code|torchcode|code_layer_|nn.Sequential/);
-      }
+      assert.match(text,/PyTorch Code/);
+      assert.match(text,/model = nn.Sequential\(/);
+      assert.match(text,/optimizer = torch\.optim\.SGD\(/);
+      assert.match(text,/L\.backward\(\)/);
+      assert.match(text,/optimizer\.step\(\)/);
+      const blueprint=book.getWorksheet('Blueprint');
+      assert.ok(blueprint.names.has('torchcode'));
+      assert.ok([...blueprint.names.keys()].some(name=>name.startsWith('code_layer_')));
+      const links=formulas(book,'Architect').map(([,v])=>v.formula).join('\n');
+      assert.match(links,/Blueprint!torchcode/);
+      assert.match(text,/HYPERLINK\("#Blueprint!torchcode"/);
+      assert.match(text,name==='classification' || name==='image' || name==='tinyDigits'
+        ? /loss_fn = nn\.CrossEntropyLoss\(\)/ : /loss_fn = nn\.MSELoss\(\)/);
+      if(name==='classification') assert.doesNotMatch(text,/nn\.Softmax/);
       if(forward) {
         assert.deepEqual([...book.sheets.keys()].sort(),['Architect','Blueprint','Helper','notes_epilogue','tinyDigits'].sort());
         assert.doesNotMatch(text,/Backprop|Weight Update|backward\(\)|optimizer|Training Loop/);

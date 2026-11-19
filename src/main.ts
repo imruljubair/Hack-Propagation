@@ -234,7 +234,7 @@ function main(workbook: ExcelScript.Workbook) {
     let imCol = 0;
     let ops_var_temp = "";
     let torchCode = "";
-    const showCode = false;
+    const showCode = true;
     let showList = false;
     let dictVar: {
         [key: string]: string;

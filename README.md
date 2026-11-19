@@ -7,18 +7,23 @@
 Interactive **backpropagation, parameter updates, and training diagnostics** in
 Microsoft Excel. This standalone codebase retains the original forward
 calculations, backward blueprint, training epochs, final inference view, and
-dashboard. PyTorch code generation and its navigation links are disabled.
-Backpropagation is always enabled.
+dashboard, together with a linked **PyTorch Code** panel containing the model,
+loss, and SGD training loop. Backpropagation is always enabled.
 
-The existing workbook button uses the original shared generator. That installed
-script suppresses PyTorch output when the workbook filename contains
-`HackPropagation` (case insensitive). The dedicated `src/main.ts` always disables
-PyTorch output. Run the generator again to replace any previously generated code
-section and links.
+To restore the code panel in an existing workbook, replace your installed
+**HackPropagation** Office Script with the complete contents of `src/main.ts`,
+save it, and run it again. Associate that script with the workbook's Run button
+if needed. Existing buttons may still reference an older shared OneDrive script;
+pulling this repository does not update scripts stored in OneDrive.
+
+The generated PyTorch code uses random example inputs, targets, and model weights.
+It illustrates the architecture and training steps; it does not export the exact
+values edited in Excel. Open the panel using **PyTorch Code** on `Architect` or
+the code links beside Blueprint blocks.
 
 ![Forward pass, backpropagation, and weight updates illustrated in Excel](assets/backpropagation-overview.png)
 
-*Illustration of forward calculations, gradient flow, and weight updates. The figure includes the original PyTorch code panel; code generation is disabled in this edition.*
+*Illustration of forward calculations, gradient flow, and weight updates. The PyTorch code panel shows the corresponding model and training loop.*
 
 ## Run in Excel
 
